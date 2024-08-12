@@ -1,5 +1,5 @@
-import 'package:hyper_ui/shared/util/db_service/db_service.dart';
-import 'package:hyper_ui/shared/util/type_extension/date_extension.dart';
+import 'package:find_kajian/shared/util/db_service/db_service.dart';
+import 'package:find_kajian/shared/util/type_extension/date_extension.dart';
 
 String key = 'tap_protection_010893';
 

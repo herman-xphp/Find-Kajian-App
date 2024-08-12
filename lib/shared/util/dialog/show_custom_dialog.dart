@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hyper_ui/core.dart';
+import 'package:find_kajian/core.dart';
 
 Future showCustomDialog({
   required String title,

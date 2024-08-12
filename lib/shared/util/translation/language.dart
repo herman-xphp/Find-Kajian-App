@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:hyper_ui/shared/util/translation/translate_id.dart';
-import 'package:hyper_ui/shared/util/translation/translate_id_custom.dart';
+import 'package:find_kajian/shared/util/translation/translate_id.dart';
+import 'package:find_kajian/shared/util/translation/translate_id_custom.dart';
 
 extension LanguageStringExtension on String {
   String get tr {

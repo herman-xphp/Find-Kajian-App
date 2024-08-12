@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hyper_ui/core.dart';
+import 'package:find_kajian/shared/theme/theme_config.dart';
+import 'package:find_kajian/state_util.dart';
 
 snackbarPrimary({required String message, int duration = 4}) {
   final snackBar = SnackBar(

@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:hyper_ui/shared/theme/theme_config.dart';
+import 'package:find_kajian/shared/theme/theme_config.dart';
 
 enum CarouselType {
   type1,

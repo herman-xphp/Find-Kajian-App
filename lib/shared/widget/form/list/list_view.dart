@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:hyper_ui/core.dart';
+import 'package:find_kajian/core.dart';
 
 class GorelaxListView extends StatefulWidget {
   const GorelaxListView({

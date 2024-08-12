@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hyper_ui/core.dart';
+import 'package:find_kajian/shared/theme/theme_config.dart';
 
 class QStatistic extends StatelessWidget {
   const QStatistic({

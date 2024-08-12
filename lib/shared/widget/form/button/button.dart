@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hyper_ui/core.dart';
+import 'package:find_kajian/shared/theme/theme_config.dart';
+import 'package:find_kajian/shared/theme/theme_size.dart';
+import 'package:find_kajian/shared/util/tap_handler/tap_handler.dart';
 
 class QButton extends StatefulWidget {
   const QButton({

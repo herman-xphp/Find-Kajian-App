@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hyper_ui/shared/theme/theme_config.dart';
+import 'package:find_kajian/shared/theme/theme_config.dart';
 
 ThemeData getDefaultTheme() {
   return ThemeData().copyWith(
@@ -12,7 +12,7 @@ ThemeData getDefaultTheme() {
       titleTextStyle: GoogleFonts.ibmPlexSans(
         color: Colors.white,
       ),
-      backgroundColor: primaryColor,
+      backgroundColor: appBarColor,
       iconTheme: const IconThemeData(
         color: Colors.white,
       ),
@@ -21,15 +21,16 @@ ThemeData getDefaultTheme() {
       ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: appBarColor,
       unselectedItemColor: Colors.grey,
-      selectedItemColor: Colors.blueGrey[900],
+      selectedItemColor: primaryColor,
     ),
     tabBarTheme: TabBarTheme(
       unselectedLabelColor: Colors.grey,
       labelColor: Colors.blueGrey[900],
     ),
     iconTheme: IconThemeData(
-      color: textColor,
+      color: primaryColor,
     ),
     textTheme: TextTheme(
       titleSmall: GoogleFonts.ibmPlexSans(
@@ -58,6 +59,7 @@ ThemeData getDefaultTheme() {
       ),
       hoverColor: Colors.transparent,
       errorMaxLines: 1,
+      errorStyle: TextStyle(color: dangerColor),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
         borderSide: BorderSide(
@@ -66,14 +68,19 @@ ThemeData getDefaultTheme() {
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
-        borderSide: const BorderSide(
-          color: Colors.transparent,
+        borderSide: BorderSide(
+          // color: tertiaryColor,
+          color: Colors.grey[300]!,
+          width: 1.2,
+          // color: Colors.transparent,
         ),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
-        borderSide: const BorderSide(
-          color: Colors.red,
+        borderSide: BorderSide(
+          // color: Colors.red,
+          color: dangerColor,
+          width: 1.2,
         ),
       ),
       disabledBorder: OutlineInputBorder(
@@ -85,21 +92,29 @@ ThemeData getDefaultTheme() {
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
         borderSide: BorderSide(
-          color: primaryColor,
+          color: tertiaryColor,
+          width: 1.4,
         ),
       ),
-      filled: true,
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(
+          color: dangerColor, // Warna border saat fokus dan ada error
+          width: 1.4,
+        ),
+      ),
+      filled: false,
       fillColor: inputColor,
     ),
     cardTheme: CardTheme(
-      elevation: 0.6,
-      color: const Color(0xfff6f6f6),
+      // elevation: 0.6,
+      color: cardColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
-        side: BorderSide(
-          width: 0.4,
-          color: Colors.grey[300]!,
-        ),
+        // side: BorderSide(
+        //   width: 0.4,
+        //   color: Colors.grey[300]!,
+        // ),
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -109,6 +124,19 @@ ThemeData getDefaultTheme() {
         ),
         backgroundColor: Colors.blueGrey,
       ),
+    ),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: cardColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(8.0),
+          topRight: Radius.circular(8.0),
+        ),
+      ),
+      modalBackgroundColor: cardColor,
+      modalElevation: 0.6,
+      elevation: 0.6,
+      clipBehavior: Clip.antiAlias,
     ),
   );
 }

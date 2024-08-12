@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:hyper_ui/core.dart';
+import 'package:find_kajian/core.dart';
 
 Dio dio = Dio();
 

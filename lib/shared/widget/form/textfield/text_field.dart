@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:find_kajian/shared/theme/theme_config.dart';
 
 class QTextField extends StatefulWidget {
   const QTextField({
-    required this.label,
     required this.onChanged,
     super.key,
+    this.label,
     this.id,
     this.value,
     this.validator,
@@ -15,10 +16,12 @@ class QTextField extends StatefulWidget {
     this.obscure = false,
     this.enabled = true,
     this.prefixIcon,
+    this.prefixIconColor,
     this.suffixIcon,
+    this.suffixIconColor,
   });
   final String? id;
-  final String label;
+  final String? label;
   final String? value;
   final String? hint;
   final String? helper;
@@ -27,7 +30,9 @@ class QTextField extends StatefulWidget {
   final bool enabled;
   final int? maxLength;
   final IconData? prefixIcon;
+  final Color? prefixIconColor;
   final IconData? suffixIcon;
+  final Color? suffixIconColor;
   final Function(String) onChanged;
   final Function(String)? onSubmitted;
 
@@ -76,13 +81,20 @@ class _QTextFieldState extends State<QTextField> {
         maxLength: widget.maxLength,
         obscureText: widget.obscure,
         decoration: InputDecoration(
-          labelText: widget.label,
-          suffixIcon: Icon(
-            widget.suffixIcon ?? Icons.abc,
-          ),
-          helperText: widget.helper,
-          hintText: widget.hint,
-        ),
+            labelText: widget.label,
+            suffixIcon: Icon(
+              widget.suffixIcon,
+              color: secondaryTextColor,
+            ),
+            suffixIconColor: widget.suffixIconColor,
+            prefixIcon: Icon(
+              widget.prefixIcon ?? Icons.abc,
+              color: secondaryTextColor,
+            ),
+            prefixIconColor: widget.prefixIconColor,
+            helperText: widget.helper,
+            hintText: widget.hint,
+            hintStyle: TextStyle(color: secondaryTextColor)),
         onChanged: (value) {
           widget.onChanged(value);
         },

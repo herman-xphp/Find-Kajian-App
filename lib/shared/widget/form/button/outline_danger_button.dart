@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hyper_ui/shared/util/tap_handler/tap_handler.dart';
+import 'package:find_kajian/shared/util/tap_handler/tap_handler.dart';
 
 class QOutlineDangerButton extends StatelessWidget {
   const QOutlineDangerButton({

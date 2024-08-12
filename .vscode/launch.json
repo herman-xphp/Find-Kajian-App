@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "__hyper_ui_public",
+            "name": "belajar_flutter_public",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "__hyper_ui_public (profile mode)",
+            "name": "belajar_flutter_public (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "__hyper_ui_public (release mode)",
+            "name": "belajar_flutter_public (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

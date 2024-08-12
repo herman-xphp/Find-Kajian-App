@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hyper_ui/core.dart';
+import 'package:find_kajian/shared/theme/theme_config.dart';
 
 class ListItem3 extends StatelessWidget {
   const ListItem3({

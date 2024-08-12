@@ -1,4 +1,4 @@
-import 'package:hyper_ui/core.dart';
+import 'package:find_kajian/core.dart';
 
 p(String message) {
   print(message);

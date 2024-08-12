@@ -22,6 +22,11 @@ class Get {
     Navigator.pop(globalContext);
   }
 
+  static void backWithResult({required bool result}) {
+    if (Navigator.canPop(globalContext) == false) return;
+    Navigator.pop(globalContext, result);
+  }
+
   static offAll(page) {
     return navigatorKey.currentState!.pushAndRemoveUntil(
       MaterialPageRoute(builder: (context) => page),

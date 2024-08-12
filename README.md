@@ -1,84 +1,36 @@
-[![Codemagic build status](https://api.codemagic.io/apps/65712148e901807b6394628b/65712148e901807b6394628a/status_badge.svg)](https://codemagic.io/apps/65712148e901807b6394628b/65712148e901807b6394628a/latest_build)
+# Find Kajian
 
-# Hyper UI
-Hyper UI adalah kumpulan sampel ReuseableWidget Flutter yang bisa kamu gunakan untuk projectmu.
-Pada dasar-nya, Hyper UI dibuat dengan tujuan untuk edukasi.
-So, project ini dibuat sesederhana mungkin dan semudah mungkin untuk digunakan.
+**Find Kajian** adalah aplikasi Flutter yang dirancang untuk memudahkan pengguna menemukan kajian di berbagai tempat. Aplikasi ini berfokus pada kenyamanan pengguna dengan menyediakan fitur pencarian dan informasi detail terkait kajian yang diinginkan.
 
 ## Architecture
-Architecture yang digunakan adalah MVC.
-Dimana state management-nya menggunakan StatefulWidget. 
 
-Kami juga mengadopsi fitur contextless di Flutter.
-Dimana, kita akan meng-cache context kita di sebuah variabel.
-Kamu bisa mengakses-nya dimana saja:
+Architecture yang digunakan dalam **Find Kajian** adalah MVC dengan state management berbasis `ValueNotifier` dan `freezed`. Kami mengintegrasikan berbagai fitur seperti navigasi dengan `GetX`, caching gambar dengan `CachedNetworkImage`, dan pengelolaan tema dinamis (light dan dark mode).
 
-```
-Get.currentContext
-```
+## Fitur Utama
 
-Mungkin terkait contextless ini masih sangat jarang yang menggunakannya. Padahal dengan menerapkan fitur contextless,
-Kita bisa mengurangi penggunaan context pada Aplikasi kita.
-Dan bisa menghindari keharusan untuk menambahkan BuildContext pada sebuah method.
+1. **Pencarian Ustadz dan Kajian**:
+   - Memungkinkan pengguna untuk mencari ustadz berdasarkan nama dan kajian berdasarkan lokasi atau judul.
+2. **Pencarian Tempat Kajian**:
 
-Contoh:
-```
-onButtonSaveClicK(BuildContext context) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => DashboardView()),
-    );
-}
-```
+   - Pengguna dapat mencari tempat tertentu untuk melihat kajian yang diadakan di sana, serta melihat informasi lengkap terkait tempat tersebut.
 
-Kita cukup mengambil context dengan `Get.currentContext`:
-```
-onButtonSaveClicK() {
-    Navigator.push(
-        Get.currentContext,
-        MaterialPageRoute(builder: (context) => DashboardView()),
-    );
-}
-```
+3. **Integrasi Lokasi**:
 
-Lebih baik lagi, kita bisa membuat custom navigation kita sendiri.
-```
-onButtonSaveClicK() {
-    Get.to(DashboardView());
-}
-```
+   - Dengan menggunakan `geolocator` dan `geocoding`, aplikasi ini mampu mendeteksi lokasi pengguna dan memberikan rekomendasi kajian terdekat.
 
+4. **Form Profil Pengguna**:
+   - Kami telah mempermudah proses pengelolaan profil pengguna dengan form yang dilengkapi dengan pilihan seperti jenis kelamin, pekerjaan, dan lokasi.
 
-## Reuseable Widget
-Saat ini fokus utama kami adalah membuat Reuseable Widget terkait Form. Intinya kami ingin mempermudah pembuatan Form di Flutter, yang terkadang itu terlalu rumit jika dibandingkan dengan pembuatan Form di HTML misalnya.
+## Widget Reusable
 
-Dengan Hyper UI, kamu bisa membuat Form dengan lebih cepat dan mudah.
-Saat ini sudah tersedia:
-```
+Kami juga menyediakan beberapa widget custom untuk memudahkan pengembangan aplikasi, di antaranya:
+
+```dart
 QTextField
 QNumberField
 QMemoField
 QDatePicker
-QTimePicker
+QDropdownField
 QImagePicker
-
-QDropdown
-QCheckField
-QRadioField
-QSwitch
 QAutoComplete
-
-QImagePicker
-QRatingField
-QLocationPicker
 ```
-<hr/>
-
-## Screenshots
-
-<img src="https://i.ibb.co/8m30PWv/1.png" style="width: 240px;"/><br/>
-<img src="https://i.ibb.co/NjqM6Cd/2.png" style="width: 240px;"/><br/>
-<img src="https://i.ibb.co/VmWGt9J/3.png" style="width: 240px;"/><br/>
-<hr/>
-
-* snippet update

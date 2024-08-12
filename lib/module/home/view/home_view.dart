@@ -38,6 +38,10 @@ class _HomeViewState extends State<HomeView> {
     super.dispose();
   }
 
+  Future<void> _refresh() async {
+    await controller.refreshData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -60,26 +64,29 @@ class _HomeViewState extends State<HomeView> {
     HomeState state,
   ) {
     return Scaffold(
-      body: SingleChildScrollView(
-        controller: ScrollController(),
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(6, 0, 6, 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              HomeLocationDate(),
+      body: RefreshIndicator(
+        onRefresh: _refresh,
+        child: SingleChildScrollView(
+          controller: ScrollController(),
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(6, 0, 6, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                HomeLocationDate(),
 
-              HomeHeading(),
+                HomeHeading(),
 
-              // Menu
-              HomeMenu(),
+                // Menu
+                HomeMenu(),
 
-              // Rekomendasi Tempat Kajian
-              HomeRekomendasi(),
+                // Rekomendasi Tempat Kajian
+                HomeRekomendasi(),
 
-              // Kajian Terbaru
-              HomeKajianTerbaru(),
-            ],
+                // Kajian Terbaru
+                HomeKajianTerbaru(),
+              ],
+            ),
           ),
         ),
       ),

@@ -22,8 +22,11 @@ mixin _$HomeState {
   set address(String? value) => throw _privateConstructorUsedError;
   String? get token => throw _privateConstructorUsedError;
   set token(String? value) => throw _privateConstructorUsedError;
-  List<dynamic> get products => throw _privateConstructorUsedError;
-  set products(List<dynamic> value) => throw _privateConstructorUsedError;
+  List<dynamic> get latestKajian => throw _privateConstructorUsedError;
+  set latestKajian(List<dynamic> value) => throw _privateConstructorUsedError;
+  List<dynamic> get topTempatKajian => throw _privateConstructorUsedError;
+  set topTempatKajian(List<dynamic> value) =>
+      throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   set isLoading(bool value) => throw _privateConstructorUsedError;
 
@@ -41,7 +44,8 @@ abstract class $HomeStateCopyWith<$Res> {
       {int currentIndex,
       String? address,
       String? token,
-      List<dynamic> products,
+      List<dynamic> latestKajian,
+      List<dynamic> topTempatKajian,
       bool isLoading});
 }
 
@@ -61,7 +65,8 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? currentIndex = null,
     Object? address = freezed,
     Object? token = freezed,
-    Object? products = null,
+    Object? latestKajian = null,
+    Object? topTempatKajian = null,
     Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
@@ -77,9 +82,13 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      products: null == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
+      latestKajian: null == latestKajian
+          ? _value.latestKajian
+          : latestKajian // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+      topTempatKajian: null == topTempatKajian
+          ? _value.topTempatKajian
+          : topTempatKajian // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
       isLoading: null == isLoading
           ? _value.isLoading
@@ -101,7 +110,8 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       {int currentIndex,
       String? address,
       String? token,
-      List<dynamic> products,
+      List<dynamic> latestKajian,
+      List<dynamic> topTempatKajian,
       bool isLoading});
 }
 
@@ -119,7 +129,8 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? currentIndex = null,
     Object? address = freezed,
     Object? token = freezed,
-    Object? products = null,
+    Object? latestKajian = null,
+    Object? topTempatKajian = null,
     Object? isLoading = null,
   }) {
     return _then(_$HomeStateImpl(
@@ -135,9 +146,13 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      products: null == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
+      latestKajian: null == latestKajian
+          ? _value.latestKajian
+          : latestKajian // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+      topTempatKajian: null == topTempatKajian
+          ? _value.topTempatKajian
+          : topTempatKajian // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
       isLoading: null == isLoading
           ? _value.isLoading
@@ -154,7 +169,8 @@ class _$HomeStateImpl implements _HomeState {
       {this.currentIndex = 0,
       this.address = null,
       this.token = null,
-      this.products = const [],
+      this.latestKajian = const [],
+      this.topTempatKajian = const [],
       this.isLoading = true});
 
   @override
@@ -168,14 +184,17 @@ class _$HomeStateImpl implements _HomeState {
   String? token;
   @override
   @JsonKey()
-  List<dynamic> products;
+  List<dynamic> latestKajian;
+  @override
+  @JsonKey()
+  List<dynamic> topTempatKajian;
   @override
   @JsonKey()
   bool isLoading;
 
   @override
   String toString() {
-    return 'HomeState(currentIndex: $currentIndex, address: $address, token: $token, products: $products, isLoading: $isLoading)';
+    return 'HomeState(currentIndex: $currentIndex, address: $address, token: $token, latestKajian: $latestKajian, topTempatKajian: $topTempatKajian, isLoading: $isLoading)';
   }
 
   @JsonKey(ignore: true)
@@ -190,7 +209,8 @@ abstract class _HomeState implements HomeState {
       {int currentIndex,
       String? address,
       String? token,
-      List<dynamic> products,
+      List<dynamic> latestKajian,
+      List<dynamic> topTempatKajian,
       bool isLoading}) = _$HomeStateImpl;
 
   @override
@@ -203,8 +223,11 @@ abstract class _HomeState implements HomeState {
   String? get token;
   set token(String? value);
   @override
-  List<dynamic> get products;
-  set products(List<dynamic> value);
+  List<dynamic> get latestKajian;
+  set latestKajian(List<dynamic> value);
+  @override
+  List<dynamic> get topTempatKajian;
+  set topTempatKajian(List<dynamic> value);
   @override
   bool get isLoading;
   set isLoading(bool value);

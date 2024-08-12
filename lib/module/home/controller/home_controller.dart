@@ -14,7 +14,8 @@ class HomeController extends Cubit<HomeState> implements IBlocBase {
   @override
   void initState() {
     //initState event
-    getCurrentLocationWithKajianData();
+    refreshLocation();
+    refreshData();
   }
 
   @override
@@ -27,34 +28,48 @@ class HomeController extends Cubit<HomeState> implements IBlocBase {
     //ready event
   }
 
-  // int currentIndex = 0;
   final CarouselController carouselController = CarouselController();
 
-  Future<void> refreshLocation() async {
-    print('refresh');
-    state.address = null;
-    emit(state.copyWith());
-    await LocationService().saveCurrentLocationWithAddress();
-    getCurrentLocationWithKajianData();
-    // state.address = await DBService.get("address");
-    // emit(state.copyWith());
+  Future<void> refreshData() async {
+    emit(state.copyWith(isLoading: true));
+    await getTopTempatKajian();
+    await getLatestKajian();
   }
 
-  getCurrentLocationWithKajianData() async {
+  Future<void> refreshLocation() async {
+    state.address = null;
+
+    emit(state.copyWith());
+
+    await LocationService().saveCurrentLocationWithAddress();
+    // await getTopTempatKajian();
+    // await getLatestKajian();
+
+    state.address = await DBService.get("address");
+
+    emit(state.copyWith());
+  }
+
+  Future<void> getLatestKajian() async {
     emit(state.copyWith(isLoading: true));
     try {
-      await LocationService().saveCurrentLocationWithAddress();
-
-      String? latitude = await DBService.get("latitude");
-      String? longitude = await DBService.get("longitude");
-
-      state.address = await DBService.get("address");
-      state.products = await HomeService(latitude!, longitude!).get();
+      state.latestKajian = await HomeService().latestKajian();
 
       emit(state.copyWith(isLoading: false));
     } catch (e) {
       print(e);
       emit(state.copyWith(isLoading: false));
+    }
+  }
+
+  Future<void> getTopTempatKajian() async {
+    try {
+      state.topTempatKajian = await HomeService().get();
+
+      emit(state.copyWith());
+    } catch (e) {
+      print(e);
+      emit(state.copyWith());
     }
   }
 }

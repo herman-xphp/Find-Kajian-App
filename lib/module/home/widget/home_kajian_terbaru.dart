@@ -17,19 +17,8 @@ class HomeKajianTerbaru extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
-          child: Text(
-            // 'Kajian Terbaru',
-            "",
-            style: TextStyle(
-              fontSize: 16.5,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ),
         Card(
-          margin: EdgeInsets.fromLTRB(16, 10, 16, 10),
+          margin: EdgeInsets.fromLTRB(16, 20, 16, 10),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18.0),
           ),
@@ -106,11 +95,11 @@ class HomeKajianTerbaru extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * 0.535,
                   child: ListView.builder(
                     padding: EdgeInsets.all(0),
-                    itemCount: state.products.length,
+                    itemCount: state.latestKajian.length,
                     physics: const ScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
-                      var item = state.products[index];
+                      var item = state.latestKajian[index];
                       return InkWell(
                         onTap: () {
                           showModalBottomSheet(

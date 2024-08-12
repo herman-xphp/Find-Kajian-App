@@ -2,13 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:find_kajian/config.dart';
 
 class SearchService {
-  var baseUrl = AppConfig.baseUrl;
-  var endpoint = "search";
-  String? token;
+  String baseUrl = AppConfig.baseUrl;
+  String endpoint = "search";
+  String? token = AppConfig.token;
 
-  SearchService() {
-    token = AppConfig.token;
-  }
   // Future<Map<String, List<Map<String, dynamic>>>> search(String query,
   // {String? type}) async {
   Future<List<Map<String, dynamic>>> search(String query,

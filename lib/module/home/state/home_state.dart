@@ -7,7 +7,8 @@ class HomeState with _$HomeState {
     @Default(0) int currentIndex,
     @Default(null) String? address,
     @Default(null) String? token,
-    @Default([]) List products,
+    @Default([]) List latestKajian,
+    @Default([]) List topTempatKajian,
     @Default(true) bool isLoading,
   }) = _HomeState;
 }

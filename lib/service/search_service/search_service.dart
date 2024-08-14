@@ -6,13 +6,13 @@ class SearchService {
   String endpoint = "search";
   String? token = AppConfig.token;
 
-  // Future<Map<String, List<Map<String, dynamic>>>> search(String query,
-  // {String? type}) async {
   Future<List<Map<String, dynamic>>> search(String query,
       {String? type}) async {
     final Dio dio = Dio();
-
     final String url = '$baseUrl/api/$endpoint';
+
+    print(token);
+
     try {
       final response = await dio.get(
         url,
@@ -35,11 +35,11 @@ class SearchService {
           return List<Map<String, dynamic>>.from(
               response.data['tempatKajians']);
         } else {
-          // print('kalau ada masuk sini!!!');
+          print('kalau ada masuk sini!!!');
           return List<Map<String, dynamic>>.from(response.data['kajians']);
         }
       } else {
-        // print(response.data);
+        print(response.data);
         throw Exception(
             "Format response tidak valid: Diharapkan Map<String, dynamic>");
       }

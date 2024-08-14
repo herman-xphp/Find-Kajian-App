@@ -11,7 +11,7 @@ class ApiService {
     final Dio dio = Dio();
     final String url = '$baseUrl/api/$endpoint';
 
-    // print(token);
+    print(token);
 
     try {
       final response = await dio.get(

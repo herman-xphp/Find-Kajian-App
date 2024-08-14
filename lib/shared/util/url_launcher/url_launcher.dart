@@ -2,17 +2,20 @@ import 'package:find_kajian/shared/util/db_service/db_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class UrlLauncher {
-  static Future<void> openMap(double latitude, double longitude) async {
+  static Future<void> openMap(String latitude, String longitude) async {
     String? latitudeUser = await DBService.get('latitude');
     String? longitudeUser = await DBService.get('longitude');
 
     final googleUrl =
-        // 'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
         "https://www.google.com/maps/dir/?api=1&origin=$latitudeUser,$longitudeUser&destination=$latitude,$longitude";
-    if (await canLaunchUrl(Uri.parse(googleUrl))) {
-      await launchUrl(Uri.parse(googleUrl));
-    } else {
-      throw 'Could not open the map.';
+
+    // print("Google URL: $googleUrl"); // Debugging
+
+    Uri googleMapsUri = Uri.parse(googleUrl);
+
+    if (!await launchUrl(googleMapsUri,
+        mode: LaunchMode.externalNonBrowserApplication)) {
+      throw 'Could not open the Map';
     }
   }
 
@@ -58,19 +61,14 @@ Wassalamu'alaikum Warahmatullahi Wabarakatuh""";
 
     if (!await launchUrl(whatsappLink,
         mode: LaunchMode.externalNonBrowserApplication)) {
-      throw 'Could not open the Map';
+      throw 'Could not open the whatsapp';
     }
   }
 
   static Future<void> openYoutube(String youtubeLink) async {
     Uri url = Uri.parse(youtubeLink);
     if (!await launchUrl(url, mode: LaunchMode.externalNonBrowserApplication)) {
-      throw 'Could not open the Map';
+      throw 'Could not open the youtube';
     }
-    // String channelName = youtubeLink;
-    // List<String> words = channelName.split(" "); // Memecah berdasarkan spasi
-    // for (String word in words) {
-    //   print(word);
-    // }
   }
 }

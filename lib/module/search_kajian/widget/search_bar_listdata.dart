@@ -403,10 +403,8 @@ class _SearchBarListdataState extends State<SearchBarListdata> {
                                               ),
                                               onPressed: () {
                                                 UrlLauncher.openMap(
-                                                  double.parse(
-                                                      item['latitude']),
-                                                  double.parse(
-                                                      item['longitude']),
+                                                  item['latitude'],
+                                                  item['longitude'],
                                                 );
                                               },
                                               icon: SvgPicture.asset(
@@ -841,10 +839,8 @@ class _SearchBarListdataState extends State<SearchBarListdata> {
                                                 ),
                                                 onPressed: () {
                                                   UrlLauncher.openMap(
-                                                    double.parse(
-                                                        item['latitude']),
-                                                    double.parse(
-                                                        item['longitude']),
+                                                    item['latitude'],
+                                                    item['longitude'],
                                                   );
                                                 },
                                                 icon: SvgPicture.asset(

@@ -626,10 +626,8 @@ class _UstadzGetKajianViewState extends State<UstadzGetKajianView> {
                                                     ),
                                                     onPressed: () {
                                                       UrlLauncher.openMap(
-                                                        double.parse(
-                                                            item['latitude']),
-                                                        double.parse(
-                                                            item['longitude']),
+                                                        item['latitude'],
+                                                        item['longitude'],
                                                       );
                                                     },
                                                     icon: SvgPicture.asset(

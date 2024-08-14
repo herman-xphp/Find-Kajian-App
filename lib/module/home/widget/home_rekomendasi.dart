@@ -266,10 +266,8 @@ class _HomeRekomendasiState extends State<HomeRekomendasi> {
                                           ),
                                           onPressed: () {
                                             UrlLauncher.openMap(
-                                              double.parse(
-                                                  tempatKajian['latitude']),
-                                              double.parse(
-                                                  tempatKajian['longitude']),
+                                              tempatKajian['latitude'],
+                                              tempatKajian['longitude'],
                                             );
                                           },
                                           icon: SvgPicture.asset(

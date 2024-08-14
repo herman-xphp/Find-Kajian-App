@@ -14,8 +14,7 @@ class HomeController extends Cubit<HomeState> implements IBlocBase {
   @override
   void initState() {
     //initState event
-    refreshLocation();
-    refreshData();
+    init();
   }
 
   @override
@@ -42,8 +41,20 @@ class HomeController extends Cubit<HomeState> implements IBlocBase {
     emit(state.copyWith());
 
     await LocationService().saveCurrentLocationWithAddress();
-    // await getTopTempatKajian();
-    // await getLatestKajian();
+
+    state.address = await DBService.get("address");
+
+    emit(state.copyWith());
+  }
+
+  Future<void> init() async {
+    state.address = null;
+
+    emit(state.copyWith());
+
+    await LocationService().saveCurrentLocationWithAddress();
+    await getTopTempatKajian();
+    await getLatestKajian();
 
     state.address = await DBService.get("address");
 

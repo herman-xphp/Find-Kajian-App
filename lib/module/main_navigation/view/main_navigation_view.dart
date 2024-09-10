@@ -72,7 +72,7 @@ class _MainNavigationViewState extends State<MainNavigationView> {
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
-          selectedIconTheme: IconThemeData(color: primaryColor),
+          selectedIconTheme: IconThemeData(color: tertiaryColor),
           currentIndex: state.selectedIndex,
           onTap: (newIndex) => controller.updateIndex(newIndex),
           type: BottomNavigationBarType.fixed,

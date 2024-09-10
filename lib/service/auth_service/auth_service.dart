@@ -12,6 +12,7 @@ class AuthService {
     required String email,
     required String password,
   }) async {
+    print(baseUrl);
     final String url = '$baseUrl/api/login';
 
     try {
@@ -29,9 +30,10 @@ class AuthService {
       );
       if (response.statusCode == 200) {
         var data = response.data;
+        // print(data);
         token = data["token"];
 
-        DBService.set("token", token!);
+        await DBService.set("token", token!);
         return true;
       }
       return false;

@@ -11,7 +11,7 @@ class ApiService {
     final Dio dio = Dio();
     final String url = '$baseUrl/api/$endpoint';
 
-    print(token);
+    // print(token);
 
     try {
       final response = await dio.get(
@@ -47,7 +47,7 @@ class ApiService {
 
   Future<List<Map<String, dynamic>>> getById(String id) async {
     final Dio dio = Dio();
-    final String url = '$baseUrl/api/$endpoint/$id/$content';
+    final String url = '$baseUrl/api/$endpoint/$id';
 
     try {
       final response = await dio.get(
@@ -76,27 +76,6 @@ class ApiService {
     } catch (e) {
       print('Error: $e');
       throw e;
-    }
-  }
-
-  Future<Map<String, dynamic>?> getCurrent(String id) async {
-    final Dio dio = Dio();
-    final String url = '$baseUrl/api/$endpoint/$id/current';
-
-    try {
-      var response = await dio.get(
-        url,
-        options: Options(
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer $token",
-          },
-        ),
-      );
-      return response.data["data"];
-    } catch (e) {
-      print("Error fetching user data: $e");
-      return null;
     }
   }
 

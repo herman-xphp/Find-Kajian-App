@@ -15,7 +15,8 @@
         "privacy_policy",
         "terms_conditions",
         "masjid_get_kajian",
-        "ustadz_get_kajian"
+        "ustadz_get_kajian",
+        "detail_kajian"
     ],
     "module_directory_name": "module",
     "experimental_mode": false,

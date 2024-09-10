@@ -12,6 +12,7 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
 import 'module/daftar_ustadz/controller/daftar_ustadz_controller.dart' as _i832;
+import 'module/detail_kajian/controller/detail_kajian_controller.dart' as _i801;
 import 'module/forget_password/controller/forget_password_controller.dart'
     as _i1014;
 import 'module/home/controller/home_controller.dart' as _i533;
@@ -77,6 +78,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i831.UpdateProfileController());
     gh.singleton<_i119.UstadzGetKajianController>(
         () => _i119.UstadzGetKajianController());
+    gh.singleton<_i801.DetailKajianController>(
+        () => _i801.DetailKajianController());
     return this;
   }
 }

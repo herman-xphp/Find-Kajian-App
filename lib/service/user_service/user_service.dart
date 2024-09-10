@@ -1,16 +1,18 @@
 import 'package:dio/dio.dart';
-import 'package:find_kajian/shared/util/db_service/db_service.dart';
+import 'package:find_kajian/config.dart';
 
 class UserService {
+  String baseUrl = AppConfig.baseUrl;
+  late final String? token = AppConfig.token;
+
   Future<Map<String, dynamic>?> getCurrentUser() async {
-    var token = await DBService.get("token");
-    if (token == null) {
-      return null;
-    }
+    final String url = '$baseUrl/api/user/current';
+
+    // print(token);
 
     try {
       var response = await Dio().get(
-        "https://findkajian.elayanan.info/api/user/current",
+        url,
         options: Options(
           headers: {
             "Content-Type": "application/json",
@@ -34,15 +36,11 @@ class UserService {
     String? address,
     String? occupation,
   }) async {
-    final token = await DBService.get("token");
-
-    if (token == null) {
-      return false;
-    }
+    final String url = '$baseUrl/api/user/current';
 
     try {
       var response = await Dio().patch(
-        "https://findkajian.elayanan.info/api/user/current",
+        url,
         options: Options(
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",

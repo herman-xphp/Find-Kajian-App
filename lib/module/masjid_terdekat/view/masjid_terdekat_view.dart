@@ -464,8 +464,10 @@ class _MasjidTerdekatViewState extends State<MasjidTerdekatView> {
                                                         ),
                                                         onPressed: () {
                                                           UrlLauncher.openMap(
-                                                            item['latitude'],
-                                                            item['longitude'],
+                                                            item['latitude']
+                                                                .toString(),
+                                                            item['longitude']
+                                                                .toString(),
                                                           );
                                                         },
                                                         icon: SvgPicture.asset(

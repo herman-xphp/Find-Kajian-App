@@ -11,7 +11,7 @@ class SearchService {
     final Dio dio = Dio();
     final String url = '$baseUrl/api/$endpoint';
 
-    print(token);
+    // print(token);
 
     try {
       final response = await dio.get(
@@ -43,9 +43,11 @@ class SearchService {
         throw Exception(
             "Format response tidak valid: Diharapkan Map<String, dynamic>");
       }
-    } catch (e) {
-      print('Error: $e');
-      throw e;
+    } on DioException catch (e) {
+      print(e.response?.data);
+      throw ('Terjadi kesalahan: ${e.message}');
+    } catch (error) {
+      throw ('error: $error');
     }
   }
 }

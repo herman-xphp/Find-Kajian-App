@@ -1,7 +1,10 @@
-import 'package:find_kajian/core.dart';
+import 'package:find_kajian/bloc_util.dart';
 import 'package:find_kajian/service/masjid_kajian_service/masjid_kajian_service.dart';
+import 'package:find_kajian/shared/util/db_service/db_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+
+import '../state/masjid_get_kajian_state.dart';
 
 @singleton
 class MasjidGetKajianController extends Cubit<MasjidGetKajianState>

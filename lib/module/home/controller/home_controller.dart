@@ -64,9 +64,9 @@ class HomeController extends Cubit<HomeState> implements IBlocBase {
   Future<void> getLatestKajian() async {
     emit(state.copyWith(isLoading: true));
     try {
-      state.latestKajian = await HomeService().latestKajian();
+      final latestKajian = await HomeService().latestKajian();
 
-      emit(state.copyWith(isLoading: false));
+      emit(state.copyWith(latestKajian: latestKajian, isLoading: false));
     } catch (e) {
       print(e);
       emit(state.copyWith(isLoading: false));

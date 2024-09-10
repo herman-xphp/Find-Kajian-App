@@ -31,8 +31,9 @@ class SearchKajianController extends Cubit<SearchKajianState>
   }
 
   void selectTempatKajian() async {
-    emit(state.copyWith(isKajianSelected: false));
+    emit(state.copyWith(isKajianSelected: false, isLoading: true));
     await search('', type: 'tempat');
+    print('sampai sini ka?');
   }
 
   Future<void> search(String query, {String? type}) async {

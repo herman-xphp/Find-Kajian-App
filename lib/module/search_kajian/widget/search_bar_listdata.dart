@@ -1,3 +1,5 @@
+import 'package:find_kajian/module/detail_kajian/controller/detail_kajian_controller.dart';
+import 'package:find_kajian/module/detail_kajian/view/detail_kajian_view.dart';
 import 'package:find_kajian/module/masjid_get_kajian/controller/masjid_get_kajian_controller.dart';
 import 'package:find_kajian/module/masjid_get_kajian/view/masjid_get_kajian_view.dart';
 import 'package:find_kajian/shared/util/db_service/db_service.dart';
@@ -20,8 +22,37 @@ class SearchBarListdata extends StatefulWidget {
 }
 
 class _SearchBarListdataState extends State<SearchBarListdata> {
-  final TextEditingController searchController = TextEditingController();
   SearchKajianController controller = SearchKajianController();
+  final TextEditingController searchController = TextEditingController();
+
+  void _navigateToKajianDetail(String id) async {
+    DBService.set('kajian_id', id);
+
+    // Menunggu kedua Future (getKajian dan getKajianReviewByKajianId) selesai
+    await Future.wait([
+      DetailKajianController().fetchUserData(),
+      DetailKajianController().getKajian(id),
+      DetailKajianController().getReviewByKajianId(id),
+    ]);
+
+    final result = await Get.to(DetailKajianView());
+    print('masuk di navigationToKajianDetail');
+    // print(cont);
+
+    // Tangani hasil dari UpdateProfileView jika diperlukan
+    if (result == null) {
+      // Misalnya, refresh data atau lakukan sesuatu setelah update berhasil
+      controller.selectKajian();
+      DBService.clear('kajian_id');
+    }
+  }
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    controller.dispose();
+    super.dispose();
+  }
 
   void _navigateToMasjidDetail(String id) async {
     DBService.set('masjid_id', id);
@@ -33,7 +64,7 @@ class _SearchBarListdataState extends State<SearchBarListdata> {
     // Tangani hasil dari UpdateProfileView jika diperlukan
     if (result == null) {
       // Misalnya, refresh data atau lakukan sesuatu setelah update berhasil
-      controller.selectTempatKajian();
+      controller.selectKajian();
       DBService.clear('masjid_id');
     }
   }
@@ -392,38 +423,97 @@ class _SearchBarListdataState extends State<SearchBarListdata> {
                                               right: 22,
                                               top: 30,
                                             ),
-                                            child: ElevatedButton.icon(
-                                              label: const Text(
-                                                'Petunjuk Arah',
-                                                style: TextStyle(
-                                                  color: Color(0xffFFFFFF),
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w500,
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Flexible(
+                                                  flex: 2,
+                                                  child: OutlinedButton.icon(
+                                                    label: Text(
+                                                      'Lihat Ulasan',
+                                                      style: TextStyle(
+                                                        color: tertiaryColor,
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                    onPressed: () {
+                                                      _navigateToKajianDetail(
+                                                          item["kajian_id"]
+                                                              .toString());
+                                                    },
+                                                    icon: Icon(
+                                                      Icons.menu_book_rounded,
+                                                      color: tertiaryColor,
+                                                      size: 24,
+                                                    ),
+                                                    style: OutlinedButton
+                                                        .styleFrom(
+                                                      side: BorderSide(
+                                                          color: tertiaryColor),
+                                                      minimumSize:
+                                                          const Size.fromHeight(
+                                                              48),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8),
+                                                      ),
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
-                                              onPressed: () {
-                                                UrlLauncher.openMap(
-                                                  item['latitude'],
-                                                  item['longitude'],
-                                                );
-                                              },
-                                              icon: SvgPicture.asset(
-                                                'assets/svg/cursor.svg',
-                                                width: 24,
-                                                height: 24,
-                                                colorFilter: ColorFilter.mode(
-                                                    Colors.white,
-                                                    BlendMode.srcIn),
-                                              ),
-                                              style: ElevatedButton.styleFrom(
-                                                backgroundColor: tertiaryColor,
-                                                minimumSize:
-                                                    const Size.fromHeight(48),
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
+                                                const SizedBox(width: 10.0),
+                                                Flexible(
+                                                  flex: 2,
+                                                  child: ElevatedButton.icon(
+                                                    label: const Text(
+                                                      'Petunjuk Arah',
+                                                      style: TextStyle(
+                                                        color:
+                                                            Color(0xffFFFFFF),
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                    onPressed: () {
+                                                      UrlLauncher.openMap(
+                                                        item['latitude']
+                                                            .toString(),
+                                                        item['longitude']
+                                                            .toString(),
+                                                      );
+                                                    },
+                                                    icon: SvgPicture.asset(
+                                                      'assets/svg/cursor.svg',
+                                                      width: 24,
+                                                      height: 24,
+                                                      colorFilter:
+                                                          ColorFilter.mode(
+                                                              Colors.white,
+                                                              BlendMode.srcIn),
+                                                    ),
+                                                    style: ElevatedButton
+                                                        .styleFrom(
+                                                      backgroundColor:
+                                                          tertiaryColor,
+                                                      minimumSize:
+                                                          const Size.fromHeight(
+                                                              48),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8),
+                                                      ),
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
+                                              ],
                                             ),
                                           ),
                                         ],
@@ -839,8 +929,9 @@ class _SearchBarListdataState extends State<SearchBarListdata> {
                                                 ),
                                                 onPressed: () {
                                                   UrlLauncher.openMap(
-                                                    item['latitude'],
-                                                    item['longitude'],
+                                                    item['latitude'].toString(),
+                                                    item['longitude']
+                                                        .toString(),
                                                   );
                                                 },
                                                 icon: SvgPicture.asset(

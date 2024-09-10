@@ -98,11 +98,6 @@ class LocationService {
   // bool _isGPSDialogShown = false;
 
   void _showEnableGPSDialog() async {
-    // if (_isGPSDialogShown)
-    //   return; // Jika dialog sudah ditampilkan, jangan tampilkan lagi
-
-    // _isGPSDialogShown = true; // Tandai bahwa dialog sedang ditampilkan
-
     await AwesomeConfirmationDialog(
         title: 'Aktifkan Lokasi',
         desc:
@@ -127,13 +122,8 @@ class LocationService {
             );
           } catch (e) {
             print('Gagal mendapatkan lokasi: $e');
-            // } finally {
-            //   _isGPSDialogShown = false; // Reset flag setelah dialog ditutup
           }
         },
         cancelText: 'Lain kali');
-    //   .then((_) {
-    // _isGPSDialogShown = false; // Reset flag setelah dialog ditutup
-    // });
   }
 }

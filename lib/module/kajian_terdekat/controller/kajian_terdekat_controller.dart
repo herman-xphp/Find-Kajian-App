@@ -41,12 +41,11 @@ class KajianTerdekatController extends Cubit<KajianTerdekatState>
 
       state.fullAddress = await DBService.get("fullAddress");
       state.products = await KajianService(latitude!, longitude!).get();
-      print('masuk sini');
 
       emit(state.copyWith(isLoading: false));
     } catch (e) {
       // Tangani kesalahan jika diperlukan
-      emit(state.copyWith(isLoading: false));
+      throw e;
     }
   }
 }

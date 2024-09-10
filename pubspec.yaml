@@ -32,6 +32,7 @@ dependencies:
   shimmer: ^3.0.0
   syncfusion_flutter_calendar: ^25.1.35
   url_launcher: ^6.1.6
+  json_annotation: ^4.9.0
 dev_dependencies:
   build_runner: ^2.4.11
   flutter_launcher_icons: "^0.13.1"

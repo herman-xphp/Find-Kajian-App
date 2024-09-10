@@ -266,8 +266,10 @@ class _HomeRekomendasiState extends State<HomeRekomendasi> {
                                           ),
                                           onPressed: () {
                                             UrlLauncher.openMap(
-                                              tempatKajian['latitude'],
-                                              tempatKajian['longitude'],
+                                              tempatKajian['latitude']
+                                                  .toString(),
+                                              tempatKajian['longitude']
+                                                  .toString(),
                                             );
                                           },
                                           icon: SvgPicture.asset(
@@ -303,7 +305,7 @@ class _HomeRekomendasiState extends State<HomeRekomendasi> {
                       return Container(
                         margin: const EdgeInsets.symmetric(horizontal: 10.0),
                         decoration: BoxDecoration(
-                          color: tertiaryColor,
+                          color: cardColor,
                           borderRadius: const BorderRadius.all(
                             Radius.circular(14.0),
                           ),

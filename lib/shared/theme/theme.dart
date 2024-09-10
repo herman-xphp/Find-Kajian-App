@@ -21,9 +21,9 @@ ThemeData getDefaultTheme() {
       ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: appBarColor,
+      backgroundColor: cardColor,
       unselectedItemColor: Colors.grey,
-      selectedItemColor: primaryColor,
+      selectedItemColor: tertiaryColor,
     ),
     tabBarTheme: TabBarTheme(
       unselectedLabelColor: Colors.grey,

@@ -11,6 +11,7 @@ class QTextField extends StatefulWidget {
     this.validator,
     this.hint,
     this.helper,
+    this.maxLines,
     this.maxLength,
     this.onSubmitted,
     this.obscure = false,
@@ -28,6 +29,7 @@ class QTextField extends StatefulWidget {
   final String? Function(String?)? validator;
   final bool obscure;
   final bool enabled;
+  final int? maxLines;
   final int? maxLength;
   final IconData? prefixIcon;
   final Color? prefixIconColor;
@@ -78,23 +80,25 @@ class _QTextFieldState extends State<QTextField> {
         controller: textEditingController,
         focusNode: focusNode,
         validator: widget.validator,
+        maxLines: widget.maxLines,
         maxLength: widget.maxLength,
         obscureText: widget.obscure,
         decoration: InputDecoration(
-            labelText: widget.label,
-            suffixIcon: Icon(
-              widget.suffixIcon,
-              color: secondaryTextColor,
-            ),
-            suffixIconColor: widget.suffixIconColor,
-            prefixIcon: Icon(
-              widget.prefixIcon ?? Icons.abc,
-              color: secondaryTextColor,
-            ),
-            prefixIconColor: widget.prefixIconColor,
-            helperText: widget.helper,
-            hintText: widget.hint,
-            hintStyle: TextStyle(color: secondaryTextColor)),
+          labelText: widget.label,
+          suffixIcon: Icon(
+            widget.suffixIcon,
+            color: secondaryTextColor,
+          ),
+          suffixIconColor: widget.suffixIconColor,
+          prefixIcon: Icon(
+            widget.prefixIcon ?? Icons.abc,
+            color: secondaryTextColor,
+          ),
+          prefixIconColor: widget.prefixIconColor,
+          helperText: widget.helper,
+          hintText: widget.hint,
+          hintStyle: TextStyle(color: secondaryTextColor),
+        ),
         onChanged: (value) {
           widget.onChanged(value);
         },
